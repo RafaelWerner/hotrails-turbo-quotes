@@ -1,0 +1,30 @@
+exclude_paths:
+  - db
+  - vendor
+  - node_modules
+
+directories:
+  "app/controllers":
+    NestedIterators:
+      max_allowed_nesting: 2
+    UnusedPrivateMethod:
+      enabled: false
+    InstanceVariableAssumption:
+      enabled: false
+  "app/mailers":
+    InstanceVariableAssumption:
+      enabled: false
+  "app/helpers":
+    IrresponsibleModule:
+      enabled: false
+  "app/models":
+    InstanceVariableAssumption:
+      enabled: false
+
+detectors:
+  TooManyMethods:
+    enabled: false
+  IrresponsibleModule:
+    enabled: false
+  TooManyStatements:
+    enabled: false

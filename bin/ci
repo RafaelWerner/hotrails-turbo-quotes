@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+set -e
+
+echo "[ bin/ci ] Running Reek"
+bin/reek .
+
+echo "[ bin/ci ] Running RuboCop"
+bin/rubocop
+
+echo "[ bin/ci ] Running Brakeman (results in tmp/brakeman.html)"
+bin/brakeman -A -q --ensure-latest --ensure-ignore-notes -o tmp/brakeman.html
+
+echo "[ bin/ci ] Running assets:precompile"
+bin/rails assets:precompile
+
+echo "[ bin/ci ] Running RSpec"
+bin/rails test:system
