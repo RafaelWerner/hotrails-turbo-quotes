@@ -15,7 +15,7 @@ class QuotesController < ApplicationController
     @quote = Quote.new(quote_params)
 
     if @quote.save
-      redirect_to quotes_path, notice: "Quote was successfully created."
+      redirect_to quotes_path, notice: I18n.t("quotes.successfull_message.create")
     else
       render :new
     end
@@ -25,7 +25,7 @@ class QuotesController < ApplicationController
 
   def update
     if @quote.update(quote_params)
-      redirect_to quotes_path, notice: "Quote was successfully updated."
+      redirect_to quotes_path, notice: I18n.t("quotes.successfull_message.update")
     else
       render :edit
     end
@@ -33,7 +33,7 @@ class QuotesController < ApplicationController
 
   def destroy
     @quote.destroy
-    redirect_to quotes_path, notice: "Quote was successfully destroyed."
+    redirect_to quotes_path, notice: I18n.t("quotes.successfull_message.destroy")
   end
 
   private
